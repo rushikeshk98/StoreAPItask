@@ -1,9 +1,12 @@
 from flask import Flask, request
 from flask_restful import Api, Resource
-from task1 import store_api
+from store_api_main import store_api
+
 app = Flask(__name__)
 api = Api(app)
-class store_api_output(Resource):
+
+
+class StoreApiOutput(Resource):
     def post(self):
         json_data = request.get_json(force=True)
         print(json_data)
@@ -12,7 +15,7 @@ class store_api_output(Resource):
         return output
 
 
-api.add_resource(store_api_output, '/storeapi/output')
+api.add_resource(StoreApiOutput, '/storeapi/output')
 
 if __name__ == '__main__':
     app.run(debug=True)
